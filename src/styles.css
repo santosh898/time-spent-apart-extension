@@ -86,6 +86,12 @@ img {
   letter-spacing: 8px;
 }
 
+.glitch-text.days {
+  font-size: 20px;
+  margin-top: 16px;
+  letter-spacing: 8px;
+}
+
 .glitch-text::before,
 .glitch-text::after {
   content: attr(data-text);

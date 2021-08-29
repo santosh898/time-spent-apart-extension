@@ -6,6 +6,7 @@ import "./styles.css";
 
 export default function App() {
   const [timeSince, setTimeSince] = useState("0000:00:00");
+  const [timeSinceInDays, setTimeSinceInDays] = useState(0);
 
   const canvasRef = useRef();
 
@@ -46,7 +47,9 @@ export default function App() {
       const format = (str) => `0${str}`.slice(-2);
       const startDate = new Date(2020, 3, 15);
       const endDate = new Date();
-      let totalSeconds = (endDate.getTime() - startDate.getTime()) / 1000;
+      const diffInMs = endDate.getTime() - startDate.getTime();
+      const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+      let totalSeconds = diffInMs / 1000;
 
       const hours = Math.floor(totalSeconds / 3600);
       totalSeconds %= 3600;
@@ -56,6 +59,7 @@ export default function App() {
       const timeSince = `${hours}:${minutes}:${seconds}`;
 
       setTimeSince(timeSince);
+      setTimeSinceInDays(Math.floor(diffInDays));
     };
     setInterval(setDiff, 1000);
     setDiff();
@@ -77,6 +81,12 @@ export default function App() {
           </div>
           <div className="glitch-text time" data-text={timeSince}>
             {timeSince}
+          </div>
+          <div
+            className="glitch-text days"
+            data-text={`${timeSinceInDays} days`}
+          >
+            {`${timeSinceInDays} days`}
           </div>
         </div>
       </div>
