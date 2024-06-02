@@ -3,7 +3,7 @@
   "name": "Time Spent",
   "version": "1.0",
   "description": "Displays the time we spent apart",
-  "author": "Hacker Noon",
+  "author": "Sai Santosh",
   "chrome_url_overrides": {
     "newtab": "index.html"
   }
